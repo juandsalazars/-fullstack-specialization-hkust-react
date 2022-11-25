@@ -3,31 +3,27 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap'
 
 class DishDetail extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        if (this.props.dish === null) return (<div></div>);
+        if (this.props.dish === null || this.props.dish === undefined) return (<div></div>);
 
         return(
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.props.dish)}
-                </div>
+            <div className="container">
+                <div className="row">
 
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderComments(this.props.dish.comments)}
+                    {this.renderDish(this.props.dish)}
+
+                    {this.renderComments(this.props.dish)}
+
                 </div>
             </div>
         );
     }
 
     renderDish(dish) {
-        if (dish === null) return (<div></div>);
+        if (dish === null || dish === undefined) return (<div></div>);
 
         return(
-            <div>
+            <div className="col-12 col-md-5 m-1">
                 <Card>
                     <CardImg width="100%" src={dish.image} alt={dish.name} /> 
                     <CardBody>
@@ -39,8 +35,10 @@ class DishDetail extends Component {
         );
     }
 
-    renderComments(commentList) {
-        if (commentList === null) return (<div></div>);
+    renderComments(dish) {
+        if (dish === null || dish === undefined) return (<div></div>);
+
+        const commentList = dish.comments
 
         const comments = commentList.map((comment) => {
             const date = new Date(comment.date);
@@ -57,7 +55,7 @@ class DishDetail extends Component {
         });
 
         return(
-            <div>
+            <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
                 <ul className="list-unstyled">
                     {comments}

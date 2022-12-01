@@ -49,7 +49,6 @@ class Main extends Component {
         return (
             <div>
                 <Header />
-                <React.StrictMode>
                     <Switch>
                         <Route path="/home" component={HomePage} />
                         <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
@@ -59,7 +58,6 @@ class Main extends Component {
                         <Redirect to="/home" />
                     </Switch>
                     <Footer />
-                </React.StrictMode>
             </div>
         );
     }

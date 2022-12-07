@@ -19,6 +19,7 @@ class CommentForm extends Component {
         }
 
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     toggleModal() {

@@ -9,11 +9,13 @@ function RenderCard({ item, isLoading, errMess }) {
         return (
             <Loading />
         );
-    } else if (errMess){
+    }
+    else if (errMess) {
         return(
             <h4>{errMess}</h4>
         );
-    } else{
+    }
+    else {
         return(
             <FadeTransform in 
                 transformProps={{
@@ -24,7 +26,7 @@ function RenderCard({ item, isLoading, errMess }) {
                     <CardImg src={baseUrl + item.image} alt={item.name} />
                     <CardBody>
                         <CardTitle>{item.name}</CardTitle>
-                        <CardSubtitle>{item.designation || null}</CardSubtitle>
+                        {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
                         <CardText>{item.description}</CardText>
                     </CardBody>
                 </Card>
@@ -33,7 +35,7 @@ function RenderCard({ item, isLoading, errMess }) {
     }
 }
 
-function Home(props){
+function Home(props) {
     return(
         <div className="container">
             <div className="row align-items-start">

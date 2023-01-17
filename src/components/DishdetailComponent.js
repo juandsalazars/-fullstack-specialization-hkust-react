@@ -19,7 +19,7 @@ function RenderDish({dish, favorite, postFavorite}) {
                     <Card>
                         <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                         <CardImgOverlay>
-                            <Button outline color="primary" onClick={() => favorite ? console.log('Already favorite') : postFavorite(dish._id)}>
+                            <Button outline color="danger" onClick={() => favorite ? console.log('Already favorite') : postFavorite(dish._id)}>
                                 {favorite ?
                                     <span className="fa fa-heart"></span>
                                     : 

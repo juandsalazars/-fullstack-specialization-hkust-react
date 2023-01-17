@@ -75,6 +75,8 @@ class Main extends Component {
         const DishWithId = ({ match }) => {
             return(
                 this.props.auth.isAuthenticated
+                && this.props.favorites.favorites
+                && 'dishes' in this.props.favorites.favorites
                 ?
                 <DishDetail
                     dish={this.props.dishes.dishes.find(

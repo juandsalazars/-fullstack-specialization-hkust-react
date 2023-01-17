@@ -94,6 +94,7 @@ class Main extends Component {
 
                     favorite={this.props.favorites.favorites.dishes.some((dish) => dish._id === match.params.dishId)}
                     postFavorite={this.props.postFavorite}
+                    deleteFavorite={this.props.deleteFavorite}
                 />
                 :
                 <DishDetail
@@ -112,6 +113,7 @@ class Main extends Component {
 
                     favorite={false}
                     postFavorite={this.props.postFavorite}
+                    deleteFavorite={this.props.deleteFavorite}
                 />
             );
         }

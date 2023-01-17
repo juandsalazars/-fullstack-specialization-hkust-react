@@ -9,7 +9,7 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
-function RenderDish({dish, favorite, postFavorite}) {
+function RenderDish({dish, favorite, postFavorite, deleteFavorite}) {
         return(
             <div className="col-12 col-md-5 m-1">
                 <FadeTransform in 
@@ -19,7 +19,7 @@ function RenderDish({dish, favorite, postFavorite}) {
                     <Card>
                         <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                         <CardImgOverlay>
-                            <Button outline color="danger" onClick={() => favorite ? console.log('Already favorite') : postFavorite(dish._id)}>
+                            <Button outline color="danger" onClick={() => favorite ? deleteFavorite(dish._id) : postFavorite(dish._id)}>
                                 {favorite ?
                                     <span className="fa fa-heart"></span>
                                     : 
@@ -180,10 +180,17 @@ const DishDetail = (props) => {
                     </div>
                 </div>
                 <div className="row">
-                    <RenderDish dish={props.dish} favorite={props.favorite} postFavorite={props.postFavorite} />
-                    <RenderComments comments={props.comments}
+                    <RenderDish 
+                        dish={props.dish} 
+                        favorite={props.favorite} 
+                        postFavorite={props.postFavorite} 
+                        deleteFavorite={props.deleteFavorite}
+                    />
+                    <RenderComments 
+                        comments={props.comments}
                         postComment={props.postComment}
-                        dishId={props.dish._id} />
+                        dishId={props.dish._id}
+                    />
                 </div>
             </div>
         );
